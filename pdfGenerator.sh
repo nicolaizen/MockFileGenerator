@@ -4,7 +4,7 @@ createNoisePdf () {
   mx=$((100*"$1"))
   my=3333
 
-  head -c "$((3*"$mx"*"$my"))" /dev/urandom | convert -depth 8 -size "${mx}x${my}" RGB:- "testfiles/pdf/$1"MB.pdf
+  head -c "$((3*"$mx"*"$my"))" /dev/urandom | convert -depth 8 -size "${mx}x${my}" RGB:- "testfiles/pdf/$1$2".pdf
 }
 
 if [ "$EUID" -ne 0 ]

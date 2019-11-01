@@ -2,7 +2,7 @@
 
 createEncryptedFile () {
     dd if=/dev/urandom of="tmp".bin count=$(( $1 * 1000 )) bs=1000
-    gpg -e -r MockFileGenerator@protonmail.com --output "./gpg/$1"MB.gpg tmp.bin
+    gpg -e -r MockFileGenerator@protonmail.com --output "./gpg/$1$2".gpg tmp.bin
     rm tmp.bin
 }
 

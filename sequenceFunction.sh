@@ -15,6 +15,7 @@ function runFunctionSequenced() {
       printf "   or: %s [OPTION]... FIRST LAST\n" "$generatorOrigin"
       printf "   or: %s [OPTION]... FIRST INCREMENT LAST\n" "$generatorOrigin"
     else
+
       if [ "$#" -eq 4 ]; then
         sizeTo="$4"
       fi
@@ -24,9 +25,16 @@ function runFunctionSequenced() {
         sizeTo="$5"
       fi
 
-      for i in $(seq "$3" "$sizeIncrement" "$sizeTo")
-      do
-        $generatorMethod "$i"
-      done
+      if [ "$sizeIncrement" -eq 0 ]; then
+        for i in $(seq 1 1 "$sizeTo")
+        do
+          $generatorMethod "$3" "MB_Sample_$i"
+        done
+      else
+        for i in $(seq "$3" "$sizeIncrement" "$sizeTo")
+        do
+          $generatorMethod "$i" "MB"
+        done
+      fi
   fi
 }
