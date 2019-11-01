@@ -6,8 +6,8 @@ createEncryptedFile () {
     rm tmp.bin
 }
 
-if [ -z "$(gpg --list-public-keys | grep MockFileGenerator@protonmail.com)" ]; then
-    echo MockFileGenerator@protonmail.com not included in publicKeys.
+if [ -z "$(gpg --list-public-keys | grep MockFileGenerator@protonmail.cosssm)" ]; then
+    printf "MockFileGenerator@protonmail.com not included in gpg --list-public-keys.\nAdd it through the following command:\ngpg --import public-key.gpg"
     exit 1
 fi
 
