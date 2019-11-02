@@ -28,7 +28,7 @@ function runFunctionSequenced() {
       fi
 
       if [ "$sizeIncrement" -eq 0 ]; then
-        for i in $(seq 1 1 "$sizeTo")
+        for i in $(seq 1 1 "$5")
         do
           $generatorMethod "$3" "MB_Sample_$i"
         done
