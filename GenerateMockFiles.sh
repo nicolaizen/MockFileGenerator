@@ -113,8 +113,6 @@ pdfFiles() {
   source ./generators/sequenceFunction.sh
   runFunctionSequenced "${0##*/}" createNoisePdf "$from" "$increment" "$to"
 
-#  printf "Created files are owned by root, exiting to change that."
-#  exec sudo chown -R "$USER":"$USER" ./testfiles/pdf
   pause
 }
 
@@ -140,6 +138,17 @@ txtFiles() {
   pause
 }
 
+zipFiles() {
+	setup_amounts
+
+	mkdir -p ./testfiles/zip
+  source ./generators/zipGenerator.sh
+  source ./generators/sequenceFunction.sh
+  runFunctionSequenced "${0##*/}" createZipFile "$from" "$increment" "$to"
+
+  pause
+}
+
 show_main_menus() {
 	show_banner "     M A I N - M E N U    "
 	echo "1. Create BINARY Files"
@@ -147,19 +156,21 @@ show_main_menus() {
 	echo "3. Create PDF Files (Might require Sudo)"
 	echo "4. Create PNG Files"
 	echo "5. Create TXT Files"
+	echo "6. Create ZIP Files"
 	echo "q | x. Exit"
 	echo "d. Deletes generated files"
 }
 
 read_main_options() {
 	local choice
-	read -p "Enter choice [ 1 - 5 ] " choice
+	read -p "Enter choice [ 1 - 6 ] " choice
 	case $choice in
 		1) binaryFiles ;;
 		2) gpgFiles ;;
 		3) pdfFiles ;;
 		4) pngFiles ;;
 		5) txtFiles ;;
+		6) zipFiles ;;
 		'q') exit 0;;
 		'x') exit 0;;
 		'd') rm -rf testfiles ;;
