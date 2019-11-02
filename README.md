@@ -1,7 +1,7 @@
 # MockFileGenerator
 Tool to create dummy files for testing.
 
-Available filetypes are .bin, .gpg(encrypted), .pdf, .png and .txt.
+Available filetypes are .bin, .gpg(encrypted), .pdf, .png, .txt, .zip and 7z.
 
 ## Installation
 Run the following in the terminal:

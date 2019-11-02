@@ -149,6 +149,18 @@ zipFiles() {
   pause
 }
 
+
+7zFiles() {
+	setup_amounts
+
+	mkdir -p ./testfiles/7z
+  source ./generators/7zGenerator.sh
+  source ./generators/sequenceFunction.sh
+  runFunctionSequenced "${0##*/}" create7zFile "$from" "$increment" "$to"
+
+  pause
+}
+
 show_main_menus() {
 	show_banner "     M A I N - M E N U    "
 	echo "1. Create BINARY Files"
@@ -157,6 +169,7 @@ show_main_menus() {
 	echo "4. Create PNG Files"
 	echo "5. Create TXT Files"
 	echo "6. Create ZIP Files"
+	echo "7. Create 7Z  Files"
 	echo "q | x. Exit"
 	echo "d. Deletes generated files"
 }
@@ -171,6 +184,7 @@ read_main_options() {
 		4) pngFiles ;;
 		5) txtFiles ;;
 		6) zipFiles ;;
+		7) 7zFiles ;;
 		'q') exit 0;;
 		'x') exit 0;;
 		'd') rm -rf testfiles ;;
