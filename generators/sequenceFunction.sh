@@ -22,7 +22,9 @@ function runFunctionSequenced() {
 
       if [ "$#" -eq 5 ]; then
         sizeIncrement="$4"
-        sizeTo="$5"
+        if [ "$3" -lt "$5" ]; then
+          sizeTo="$5"
+        fi
       fi
 
       if [ "$sizeIncrement" -eq 0 ]; then

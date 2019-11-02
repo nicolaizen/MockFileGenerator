@@ -1,8 +1,9 @@
 #!/bin/bash
+testFilesDir="./testfiles/gpg/"
 
 createEncryptedFile () {
     dd if=/dev/urandom of="tmp".bin count=$(( $1 * 1000 )) bs=1000
-    gpg -e -r MockFileGenerator@protonmail.com --output "./gpg/$1$2".gpg tmp.bin
+    gpg -e -r MockFileGenerator@protonmail.com --output "$testFilesDir$1$2".gpg tmp.bin
     rm tmp.bin
 }
 
@@ -11,6 +12,13 @@ if [ -z "$(gpg --list-public-keys | grep MockFileGenerator@protonmail.com)" ]; t
     exit 1
 fi
 
-mkdir -p gpg
-source ./sequenceFunction.sh
-runFunctionSequenced "${0##*/}" createEncryptedFile "$@"
+main () {
+  testFilesDir="../testfiles/gpg/"
+  mkdir -p $testFilesDir
+  source ./sequenceFunction.sh
+  runFunctionSequenced "${0##*/}" createEncryptedFile "$@"
+}
+
+if [ -n "$1" ]; then
+  main "$@"
+fi
