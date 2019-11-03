@@ -149,7 +149,6 @@ zipFiles() {
   pause
 }
 
-
 7zFiles() {
 	setup_amounts
 
@@ -157,6 +156,17 @@ zipFiles() {
   source ./generators/7zGenerator.sh
   source ./generators/sequenceFunction.sh
   runFunctionSequenced "${0##*/}" create7zFile "$from" "$increment" "$to"
+
+  pause
+}
+
+jpgFiles() {
+	setup_amounts
+
+	mkdir -p ./testfiles/jpg
+  source ./generators/jpgGenerator.sh
+  source ./generators/sequenceFunction.sh
+  runFunctionSequenced "${0##*/}" createNoiseJpg "$from" "$increment" "$to"
 
   pause
 }
@@ -170,6 +180,7 @@ show_main_menus() {
 	echo "5. Create TXT Files"
 	echo "6. Create ZIP Files"
 	echo "7. Create 7Z  Files"
+	echo "8. Create JPG Files"
 	echo "q | x. Exit"
 	echo "d. Deletes generated files"
 }
@@ -184,7 +195,8 @@ read_main_options() {
 		4) pngFiles ;;
 		5) txtFiles ;;
 		6) zipFiles ;;
-		7) 7zFiles ;;
+		7) 7zFiles  ;;
+		8) jpgFiles ;;
 		'q') exit 0;;
 		'x') exit 0;;
 		'd') rm -rf testfiles ;;
