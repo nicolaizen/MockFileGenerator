@@ -1,7 +1,7 @@
 # MockFileGenerator
 Tool to create dummy files for testing.
 
-Available filetypes are .bin, .gpg(encrypted), .pdf, .png, .txt, .zip and 7z.
+Available filetypes are .bin, .gpg(encrypted), .pdf, .png, .txt, .zip, 7z and jpg.
 
 ## Installation
 Run the following in the terminal:
@@ -14,6 +14,8 @@ $ gpg --import public-key.gpg
 ```
 
 ## Usage
+Note! The code uses relative paths so set the current/working directory to this repo before use.
+
 Run 
 ```bash
 $ ./GenerateMockFiles.sh

@@ -17,6 +17,3 @@ main () {
 if [ -n "$1" ]; then
   main "$@"
 fi
-
-
-
